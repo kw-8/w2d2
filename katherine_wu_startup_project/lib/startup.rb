@@ -35,4 +35,32 @@ class Startup
         else raise "startup does not have enough funding"
         end
     end
+
+    def payday
+        @employees.each{|employee| pay_employee(employee)}
+    end
+
+    '''
+    '''
+    # PART 3
+    '''
+    '''
+    def average_salary
+        @employees.map{|employee| @salaries[employee.title]}.sum / @employees.length
+    end
+
+    def close
+        @employees = []
+        @funding = 0
+    end
+
+    def acquire(other_startup)
+        # debugger
+        @funding += other_startup.funding
+        other_startup.salaries.each{|ttl, sal| @salaries[ttl] = sal if !valid_title?(ttl)}
+        @employees += other_startup.employees
+        other_startup.close
+    end
+
+
 end
