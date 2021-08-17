@@ -1,3 +1,4 @@
+require "byebug"
 class Room
     attr_reader :capacity, :occupants
 
@@ -17,8 +18,8 @@ class Room
     def add_occupant(name)
         if !full?
             @occupants << name
-            true
-        else false
+            return true
+        else return false
         end
     end
 
