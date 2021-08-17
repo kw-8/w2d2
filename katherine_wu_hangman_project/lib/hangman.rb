@@ -14,4 +14,16 @@ class Hangman
     @remaining_incorrect_guesses = 5
   end
 
+  def already_attempted?(char)
+    @attempted_chars.include?(char)
+  end
+
+  def get_matching_indices(char)
+    (0...@secret_word.length).select{|i| @secret_word[i] == char}
+  end
+
+  def fill_indices(char, indices_arr)
+    indices_arr.each{|i| @guess_word[i] = char}
+  end
+
 end
